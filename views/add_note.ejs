@@ -1,0 +1,28 @@
+<div class="container">
+    <p><a href="<%= link2 %>" class="btn btn-primary" role="button">HOME</a></p>
+        <h2>Enter the Note</h2>
+        <form action="add_note" method="POST" onsubmit="myFunction()">
+          <div class="form-group">
+            <label for="usr">Provide the Subject</label></br>
+            <input type="text" class="sub" name="sub" id="sub">
+          </div>
+          <div class="form-group">
+            <label for="usr">Note</label></br>
+            <textarea id="summernote" name="note"></textarea>
+          </div>
+          <div class="form-group">
+          <button class="btn btn-primary" type="submit" value="Submit">Submit</button>
+          </div>
+    </form>
+</div>
+<script>
+    function myFunction(){
+      alert("Note Added Successfully");
+    }
+    $($('#summernote').summernote("code",{
+      placeholder:"Note Body",
+        tabsize: 2,
+        height: 100,
+        width: 1200
+      })).text();
+</script>

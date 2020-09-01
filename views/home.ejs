@@ -1,0 +1,38 @@
+<div class="container">
+    <% for(var i=0; i < articles.length; i++) { %>
+    <div class="msg_item">
+        <div class="header">
+            <div>
+                <strong>Subject: <%= articles[i].sub %></strong>
+            </div>
+            <div>
+                <div>
+                    Note: <%= articles[i].note %>
+                </div>
+            </div>
+            <button data-id="<%=articles[i].id%>" class="delete btn btn-info">Delete</button>
+        </div>  
+        <br> 
+    </div>
+    <% } %>       
+    <p><a href="<%= link0 %>" class="btn btn-primary" role="button">ADD NEW NOTE</a></p>
+            
+</div>  
+<script>
+    $('.delete').on('click',function(){
+        const element=$(this).parents().eq(1);
+        const deleteid=$(this).data("id");
+        console.log(deleteid)
+        $.ajax({
+            type:'DELETE',
+            url:'/api/delete/'+deleteid,
+            contentType:"application/json",
+            success:(data)=>{
+                element.remove()
+            },
+            error:()=>{
+                alert("oops")
+            }
+        })
+    })
+</script>
